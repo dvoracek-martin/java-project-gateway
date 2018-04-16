@@ -30,7 +30,7 @@ public class TimeController {
     public String getTime(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         logger.info("Application "
                 + messageSource.getMessage("app.name", null, Locale.getDefault())
-                + " received " + RequestMethod.GET + "request on url:" + ROOT_URL + V1);
+                + " received " + RequestMethod.GET + " request on url:" + ROOT_URL + V1);
 
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject("http://localhost:9001/", String.class);
