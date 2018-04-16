@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,12 +31,11 @@ public class TimeController {
         logger.info("Application "
                 + messageSource.getMessage("app.name", null, Locale.getDefault())
                 + " received " + RequestMethod.GET + "request on url:" + ROOT_URL + V1);
+
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject("http://localhost:9001/", String.class);
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-        String response = new JSONObject()
-                .put("time", String.valueOf(LocalTime.now()))
-                .put("pod", System.getenv("HOSTNAME"))
-                .toString();
-        return response;
+        return result;
     }
 }
 
