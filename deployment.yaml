@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: frontend
 spec:
-  externalIPs:
-  - 46.28.110.65
   selector:
     app: hello
     tier: frontend
@@ -13,28 +11,26 @@ spec:
     port: 9000
     targetPort: 9000
   type: LoadBalancer
-
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: java-project-gateway
+  name: frontend
 spec:
   selector:
     matchLabels:
-      app: java-project-gateway
-      tier: java-project-gateway
+      app: hello
+      tier: frontend
       track: stable
   replicas: 1
   template:
     metadata:
       labels:
-        app: java-project-gateway
-        tier: java-project-gateway
+        app: hello
+        tier: frontend
         track: stable
     spec:
       containers:
-            - name: java-project-gateway
-              image: dworza/java-project-gateway:latest
-              imagePullPolicy: "Always"
+      - name: nginx
+        image: dworza/java-project-gateway:latest
+        imagePullPolicy: "Always"
