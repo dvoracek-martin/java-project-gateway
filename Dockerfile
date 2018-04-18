@@ -1,4 +1,4 @@
 FROM openjdk
 ADD target/gateway.jar gateway.jar
 ENTRYPOINT ["java", "-jar", "/gateway.jar"]
-EXPOSE 9000
+EXPOSE 80
