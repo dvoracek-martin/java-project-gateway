@@ -31,7 +31,7 @@ public class TimeController {
                 + " received " + RequestMethod.GET + " request on url:" + ROOT_URL + V1);
 
         RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject("http://localhost:9001/", String.class);
+        String result = restTemplate.getForObject("http://localhost:80/", String.class);
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
         return result;
     }
