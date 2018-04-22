@@ -1,40 +1,41 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: frontend
-spec:
-  selector:
-    matchLabels:
-      app: hello
-      tier: frontend
-      track: stable
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: hello
-        tier: frontend
-        track: stable
-    spec:
-      containers:
-      - name: nginx
-        image: dworza/java-project-gateway:latest
-        imagePullPolicy: "Always"
-
----
-
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend
+  name: default-subdomain
 spec:
   externalIPs:
   - 46.28.110.65
   selector:
-    app: hello
-    tier: frontend
+    name: busybox
+  clusterIP: None
   ports:
-  - protocol: "TCP"
+  - name: foo # Actually, no port is needed.
     port: 80
     targetPort: 80
-  type: LoadBalancer
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox1
+  labels:
+    name: busybox
+spec:
+  hostname: busybox-1
+  subdomain: default-subdomain
+  containers:
+  - image: dworza/time-provider:latest
+    name: busybox
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox2
+  labels:
+    name: busybox
+spec:
+  hostname: busybox-2
+  subdomain: default-subdomain
+  containers:
+  - image:  dworza/time-provider:latest
+    command:
+    name: busybox
