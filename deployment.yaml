@@ -6,7 +6,6 @@ spec:
   selector:
     name: busybox
   clusterIP: None
-
 ---
 apiVersion: v1
 kind: Pod

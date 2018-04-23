@@ -31,7 +31,7 @@ public class TimeController {
                 + " received " + RequestMethod.GET + " request on url:" + ROOT_URL + V1);
 
         RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject("http://default-subdomain:90/", String.class);
+        String result = restTemplate.getForObject("http://default-subdomain.default.svc.cluster.local:90/", String.class);
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
         return result;
     }
