@@ -17,7 +17,7 @@ spec:
   hostname: busybox-1
   subdomain: default-subdomain
   containers:
-  - image: dowrza/java-project-gateway:latest
+  - image: dworza/java-project-gateway:latest
     name: busybox
 ---
 apiVersion: v1

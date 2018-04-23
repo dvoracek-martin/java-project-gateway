@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Locale;
 
 @RestController
 @RequestMapping(value = "/api/time")
@@ -26,10 +25,8 @@ public class TimeController {
 
     @RequestMapping(value = V1, method = RequestMethod.GET)
     public String getTime(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
-        logger.info("Application "
-                + " received " + RequestMethod.GET + " request on url:" + ROOT_URL + V1);
 
-        RestTemplate restTemplate = new RestTemplate();
+        logger.info("Application received " + RequestMethod.GET + " request on url: /api/time/v1");     RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject("http://default-subdomain.default.svc.cluster.local:90/", String.class);
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
         return result;
