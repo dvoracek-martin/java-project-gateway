@@ -18,14 +18,12 @@ public class TimeController {
     @Autowired
     private MessageSource messageSource;
 
-    private static final String ROOT_URL = "/api/time";
     private static final String V1 = "/v1";
 
     private static final Logger logger = Logger.getLogger(TimeController.class);
 
     @RequestMapping(value = V1, method = RequestMethod.GET)
     public String getTime(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
-
         logger.info("Application received " + RequestMethod.GET + " request on url: /api/time/v1");     RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject("http://default-subdomain.default.svc.cluster.local:90/", String.class);
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);

@@ -10,15 +10,14 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: busybox1
+  name: java-project-gateway
   labels:
-    name: busybox
 spec:
-  hostname: busybox-1
+  hostname: java-project-gateway
   subdomain: default-subdomain
   containers:
   - image: dworza/java-project-gateway:latest
-    name: busybox
+    name: java-project-gateway
 ---
 apiVersion: v1
 kind: Pod
