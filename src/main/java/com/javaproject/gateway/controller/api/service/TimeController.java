@@ -27,7 +27,6 @@ public class TimeController {
     @RequestMapping(value = V1, method = RequestMethod.GET)
     public String getTime(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         logger.info("Application "
-                + messageSource.getMessage("app.name", null, Locale.getDefault())
                 + " received " + RequestMethod.GET + " request on url:" + ROOT_URL + V1);
 
         RestTemplate restTemplate = new RestTemplate();
