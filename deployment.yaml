@@ -6,10 +6,7 @@ spec:
   selector:
     name: busybox
   clusterIP: None
-  ports:
-  - name: foo # Actually, no port is needed.
-    port: 1234
-    targetPort: 1234
+
 ---
 apiVersion: v1
 kind: Pod
@@ -21,7 +18,7 @@ spec:
   hostname: busybox-1
   subdomain: default-subdomain
   containers:
-  - image: dworza/time-provider:latest
+  - image: dowrza/java-project-gateway:latest
     name: busybox
 ---
 apiVersion: v1
@@ -34,5 +31,8 @@ spec:
   hostname: busybox-2
   subdomain: default-subdomain
   containers:
-  - image:  dworza/java-project-gateway:latest
+  - image:  dworza/time-provider:latest
+    command:
     name: busybox
+
+
