@@ -25,7 +25,7 @@ public class TimeController {
     @RequestMapping(value = V1, method = RequestMethod.GET)
     public String getTime(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         logger.info("Application received " + RequestMethod.GET + " request on url: /api/time/v1");     RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject("http://default-subdomain.default.svc.cluster.local:90/", String.class);
+        String result = restTemplate.getForObject("http://java-project.default.svc.cluster.local:90/", String.class);
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
         return result;
     }
