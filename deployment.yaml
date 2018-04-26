@@ -1,36 +1,20 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: default-subdomain
-spec:
-  selector:
-    name: busybox
-  clusterIP: None
----
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: java-project-gateway
-  labels:
 spec:
-  hostname: java-project-gateway
-  subdomain: default-subdomain
-  containers:
-  - image: dworza/java-project-gateway:latest
-    name: java-project-gateway
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: busybox2
-  labels:
-    name: busybox
-spec:
-  hostname: busybox-2
-  subdomain: default-subdomain
-  containers:
-  - image:  dworza/time-provider:latest
-    command:
-    name: busybox
-
-
+  selector:
+    matchLabels:
+      run: java-project-gateway
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: java-project-gateway
+    spec:
+      containers:
+      - name: java-project-gateway
+        image: dworza/java-project-gateway:latest
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 80
