@@ -6,7 +6,7 @@
 	<groupId>com.java-project.m8</groupId>
 	<artifactId>gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 
 	<name>gateway</name>
 	<description>Gateway for java-project application</description>
@@ -24,7 +24,14 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<modules>
+		<module>java-project-gateway-web</module>
+		<module>java-project-gateway-service</module>
+		<module>java-project-gateway-app</module>
+	</modules>
+
 	<dependencies>
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
