@@ -1,4 +1,4 @@
 FROM openjdk
-ADD target/gateway.jar gateway.jar
-ENTRYPOINT ["java", "-jar", "/gateway.jar"]
+ADD target/java-project-gateway-web.jar java-project-gateway-web.jar
+ENTRYPOINT ["java", "-jar", "/java-project-gateway-web.jar"]
 EXPOSE 80
