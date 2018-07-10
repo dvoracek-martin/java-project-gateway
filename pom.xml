@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>gateway</name>
+    <name>java-project-gateway-web</name>
     <description>Gateway for java-project application</description>
 
     <parent>
